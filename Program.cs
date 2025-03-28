@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿IEmployee sofwareDeveloper = new SoftwareDeveloper();
+IEmployee accountant = new Accountant();
+sofwareDeveloper.Work();
+accountant.Work();
