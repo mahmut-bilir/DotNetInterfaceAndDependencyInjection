@@ -8,3 +8,12 @@ IVehicle car = new Car();
 
 motorcycle.Drive();
 car.Drive();
+
+IMessageSender email = new EmailSender();
+IMessageSender sms = new SmsSender();
+
+NotificationService emailService = new NotificationService(email);
+NotificationService smsService = new NotificationService(sms);
+
+emailService.NotificationSender("Hi Email!");
+smsService.NotificationSender("Hi Sms!");
