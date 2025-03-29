@@ -1,4 +1,8 @@
-﻿IEmployee sofwareDeveloper = new SoftwareDeveloper();
+﻿
+
+using Microsoft.Extensions.DependencyInjection;
+
+IEmployee sofwareDeveloper = new SoftwareDeveloper();
 IEmployee accountant = new Accountant();
 sofwareDeveloper.Work();
 accountant.Work();
@@ -17,3 +21,13 @@ NotificationService smsService = new NotificationService(sms);
 
 emailService.NotificationSender("Hi Email!");
 smsService.NotificationSender("Hi Sms!");
+
+
+
+var service = new ServiceCollection();
+
+service.AddTransient<IMessageSender, EmailSender>();
+
+var provider = service.BuildServiceProvider();
+var messageService = provider.GetService<IMessageSender>();
+messageService?.Send("Message sent with DI!");
